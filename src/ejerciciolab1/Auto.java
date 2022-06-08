@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- *
  * @author POSITIVO BGH
  */
 public class Auto {
@@ -21,13 +20,22 @@ public class Auto {
     private int combustible;
     protected List<Rueda> ruedas = new ArrayList<>();
 
+    public List<Rueda> getRuedas() {
+        return ruedas;
+    }
+
+    public void setRuedas(List<Rueda> ruedas) {
+        this.ruedas = ruedas;
+    }
+
     public Auto() {
     }
 
-    public Auto(String patente, String color, int combustible) {
+    public Auto(String patente, String color) {
         this.patente = patente;
         this.color = color;
-        this.combustible = combustible;
+        this.combustible = 50;
+        //por determinado el auto tiene el tanque lleno
     }
 
     public String getPatente() {
@@ -45,45 +53,40 @@ public class Auto {
     public void setColor(String color) {
         this.color = color;
     }
-
+    // no hay setter de combustible para que no se pueda alterar su valor
     public int getCombustible() {
         return combustible;
     }
 
-    public void setCombustible(int combustible) {
-        this.combustible = combustible;
-    }
-
     public void avanzar() {
-       
         System.out.println("INGRESE LOS METROS A AVANZAR");
-        int metros, totalcombustible;
+        int metros, consume;
         metros = lector.nextInt();
-        totalcombustible = metros / 10;
-        if (totalcombustible <= this.combustible) {
-            System.out.println("PUEDE AVANZAR");
-                this.combustible -= totalcombustible;
-            System.out.println(combustible +" " + totalcombustible);
-        
-            
-        } else {
+        //consume contiene los litros de combustible usados por cada 10 metros a moverse
+        consume = metros / 10;
+        if (consume > this.combustible) {
+            //si se consume mas de lo que hay
             System.out.println("DEBE LLENAR EL TANQUE");
-             System.out.println(combustible + " "+totalcombustible);
+        } else {
+            //si consumo menos de lo que tengo
+            System.out.println("PUEDE AVANZAR " +metros+" METROS");
+            this.combustible -= consume;
         }
     }
 
     public void retroceder() {
         System.out.println("INGRESE LOS METROS A RETROCEDER");
-        int metros, totalcombustible;
+        int metros, consume;
         metros = lector.nextInt();
-        totalcombustible = metros / 10;
-        if (totalcombustible <= this.combustible) {
-            System.out.println("PUEDE RETROCEDER");
-            this.combustible -= totalcombustible;
-               System.out.println(combustible +" " + totalcombustible);
-        } else {
+        //consume contiene los litros de combustible usados por cada 10 metros a moverse
+        consume = metros / 10;
+        if (consume > this.combustible) {
+            //si se consume mas de lo que hay
             System.out.println("DEBE LLENAR EL TANQUE");
-               System.out.println(combustible +" " + totalcombustible);
+        } else {
+            //si consumo menos de lo que tengo
+            System.out.println("PUEDE RETROCEDER " +metros+" METROS");
+            this.combustible -= consume;
         }
     }
 

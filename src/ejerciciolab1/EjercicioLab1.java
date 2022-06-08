@@ -18,26 +18,45 @@ public class EjercicioLab1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Auto a1 = new Auto();
-        Rueda r = new Rueda();
         List<Rueda> ruedas = new ArrayList<>();
-        System.out.println("RUEDAS");
+        //creamos una lista de ruedas y las generamos con presion al maximo
         for (int i = 0; i < 4; i++) {
+            Rueda r = new Rueda();
             r.inflar();
+            //las añadimos una a una a la lista de ruedas
             ruedas.add(r);
-            System.out.println("Se ha agregado la rueda " + i);
         }
-
-        a1.llenarTanque();
-        a1.avanzar();
-        a1.retroceder();
-        a1.llenarTanque();
-        for (Rueda rueda : ruedas) {
-            System.out.println(rueda);
-        }
-        for (Rueda rueda : ruedas) {
-         
-        }
+        //agregamos la lista de ruedas como atributo del auto
+        Auto a1 = new Auto();
+        a1.setRuedas(ruedas);
+        //creamos un contador para usar las distintas funciones de la rueda en cada una
+        int i =0;
+        for (Rueda rueda : a1.getRuedas()) {
+            i++;
+            switch(i){
+                case 1:{
+                    rueda.desinflar();
+                    break;
+                }
+                case 2:{
+                    a1.avanzar();
+                    rueda.pinchar();
+                    break;
+                }
+                case 3:{
+                    //llenamos el tanque e inflamos la rueda anterior
+                    a1.llenarTanque();
+                    i--;
+                    rueda.inflar();
+                    i++;
+                    break;
+                }
+                case 4:{
+                    a1.retroceder();
+                    rueda.desinflar();
+                    break;
+                }
+            }
+        }   
     }
-
 }
