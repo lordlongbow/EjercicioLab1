@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="RobotHombre">
+  <ClassDiagramComponents>
+    <Class name="Hombre" package="RobotHombre" visibility="public" xPosition="711.0" yPosition="274.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="jugarConRobot" returnType="void" visibility="public">
+          <Argument type="Robot" name="R2D2"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Robot" package="RobotHombre" visibility="public" xPosition="186.0" yPosition="274.0">
+      <Fields>
+        <Field name="serie" type="int" visibility="private"/>
+        <Field name="bateria" type="double" visibility="private"/>
+        <Field name="despierto" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="serie"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getSerie" returnType="int" visibility="public"/>
+        <Method name="getBateria" returnType="double" visibility="public"/>
+        <Method name="isDespierto" returnType="boolean" visibility="public"/>
+        <Method name="setSerie" returnType="void" visibility="public">
+          <Argument type="int" name="serie"/>
+        </Method>
+        <Method name="despierto" returnType="boolean" visibility="public"/>
+        <Method name="dormir" returnType="boolean" visibility="public"/>
+        <Method name="recargar" returnType="void" visibility="public"/>
+        <Method name="bateriaLLena" returnType="boolean" visibility="public"/>
+        <Method name="bateriaVacia" returnType="boolean" visibility="public"/>
+        <Method name="cargaActual" returnType="double" visibility="public"/>
+        <Method name="avanzar" returnType="void" visibility="public">
+          <Argument type="int" name="pasos"/>
+        </Method>
+        <Method name="retroceder" returnType="void" visibility="public">
+          <Argument type="int" name="pasos"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TestJuego" package="RobotHombre" visibility="public" xPosition="447.0" yPosition="67.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="RobotHombre.Hombre" target="RobotHombre.Robot" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
